@@ -38,7 +38,6 @@ export function capCommand(regl: Regl, geometry: Geometry) {
     vert: `
         precision highp float;
         attribute vec2 position;
-        attribute vec3 color;
         attribute vec2 pA, pB;
         uniform float width;
         uniform mat4 projection;
@@ -59,7 +58,7 @@ export function capCommand(regl: Regl, geometry: Geometry) {
 
     attributes: {
       position: {
-        buffer: geometry.positions,
+        buffer: regl.buffer(geometry.positions),
         divisor: 0,
       },
       pA: {
@@ -99,7 +98,7 @@ export function capCommand(regl: Regl, geometry: Geometry) {
       enable: false,
     },
 
-    elements: geometry.cells,
+    elements: regl.elements(geometry.cells),
     instances: regl.prop<any, any>("instances"),
     viewport: regl.prop<any, any>("viewport"),
   });

@@ -69,7 +69,7 @@ export function interleavedStripCommand(regl: Regl) {
 
     attributes: {
       position: {
-        buffer: geometry.positions,
+        buffer: regl.buffer(geometry.positions),
         divisor: 0,
       },
       pA: {
@@ -117,7 +117,7 @@ export function interleavedStripCommand(regl: Regl) {
       enable: false,
     },
 
-    elements: geometry.cells,
+    elements: regl.elements(geometry.cells),
     instances: regl.prop<any, any>("segments"),
     viewport: regl.prop<any, any>("viewport"),
   });
@@ -128,7 +128,6 @@ export function interleavedStripTerminalCommand(regl: Regl) {
     vert: `
         precision highp float;
         attribute vec2 position;
-        attribute vec3 color;
         attribute vec2 pA, pB, pC;
         uniform float width;
         uniform mat4 projection;
@@ -175,7 +174,7 @@ export function interleavedStripTerminalCommand(regl: Regl) {
 
     attributes: {
       position: {
-        buffer: geometry.positions,
+        buffer: regl.buffer(geometry.positions),
         divisor: 0,
       },
       pA: {
@@ -221,7 +220,7 @@ export function interleavedStripTerminalCommand(regl: Regl) {
       enable: false,
     },
 
-    elements: geometry.cells,
+    elements: regl.elements(geometry.cells),
     instances: regl.prop<any, any>("segments"),
     viewport: regl.prop<any, any>("viewport"),
   });

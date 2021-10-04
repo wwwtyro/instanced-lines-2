@@ -60,7 +60,7 @@ export function miterJoinCommand(regl: Regl) {
 
     attributes: {
       position: {
-        buffer: geometry.positions,
+        buffer: regl.buffer(geometry.positions),
         divisor: 0,
       },
       pointA: {
@@ -99,7 +99,7 @@ export function miterJoinCommand(regl: Regl) {
       face: "back",
     },
 
-    elements: geometry.cells,
+    elements: regl.elements(geometry.cells),
     instances: regl.prop<any, any>("instances"),
     viewport: regl.prop<any, any>("viewport"),
   });

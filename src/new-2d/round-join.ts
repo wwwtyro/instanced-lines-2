@@ -74,7 +74,7 @@ export function roundJoinCommand(regl: Regl, resolution: number) {
 
     attributes: {
       id: {
-        buffer: geometry.ids,
+        buffer: regl.buffer(geometry.ids),
         divisor: 0,
       },
       pointA: {
@@ -113,7 +113,7 @@ export function roundJoinCommand(regl: Regl, resolution: number) {
       face: "back",
     },
 
-    elements: geometry.cells,
+    elements: regl.elements(geometry.cells),
     instances: regl.prop<any, any>("instances"),
     viewport: regl.prop<any, any>("viewport"),
   });
